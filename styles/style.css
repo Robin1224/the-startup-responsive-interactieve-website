@@ -1,0 +1,262 @@
+/* ----- GLOBAL ----- */
+:root {
+   --black: #000;   
+   --white: #fff;
+   --offblack: #211D1E;
+   --offwhite: #FEF4E7;
+   --red: #FC4F4F;
+   --lightgreen: #bdf6c2;
+   --yellow: #fcc539;
+   --green: #07904F;
+   --blue: #207CD5;
+   --darkblue: #061D3A;
+   --salmon: #FEDADA;
+   --purple: #684f9f;
+   --pink: #e9a8df;
+   --gray: #556a6e;
+   --orange: #f0842b;
+   --lime: #9acf61;
+
+   --stripes-width: calc(50vw / 19);
+}
+
+* {
+   box-sizing: border-box;
+}
+
+body {
+   margin: 0;
+   padding: 0;
+   font-family: reross-rectangular,sans-serif;
+   font-weight: 400;
+   font-style: normal;
+   font-size: 1.2em;
+   line-height: 1.4;
+   background-color: var(--offwhite);
+   color: var(--offblack);
+}
+
+h1 {
+   margin: 0;
+}
+
+/* ----- SECTIONS ----- */
+
+/* -- Section 1 -- */
+section#personal-info {
+   width: 100%;
+   height: calc(50vw * 3); /* Calculating height by first taking the width of one column (vw/2) and multiplying it by the amount of rows */
+   display: grid;
+   grid-template-areas:
+      "a b" 
+      "c d" 
+      "c d";
+}
+
+/* Assigning grid area for each div */
+section#personal-info > div:nth-of-type(1) { grid-area: a; }
+section#personal-info > div:nth-of-type(2) { grid-area: b; }
+section#personal-info > div:nth-of-type(3) { grid-area: c; }
+section#personal-info > div:nth-of-type(4) { grid-area: d; }
+
+/* Basic information text */
+section#personal-info > div > div > div > h3 {
+    margin: 0;
+    padding: 0;
+    color: var(--offwhite);
+    padding-top: 1rem;
+    margin-left: 1rem;
+    font-size: 1.3rem;
+}
+
+section#personal-info > div > div > img {
+  margin: 0;
+  padding: 0;
+  color: var(--offwhite);
+  height: calc(50vw * 0.9);
+  width: calc(50vw * 0.9);
+  transform: translateY(calc(50vw * 0.1));
+}
+
+section#personal-info > div:nth-of-type(3) > div {
+  overflow: hidden;
+}
+
+#location-container {
+  display: flex;
+  flex-direction: row;
+}
+
+#pin-svg {
+  margin-top: 0.8rem;
+  margin-left: 0.8rem;
+  height: calc(50vw * 0.1);
+  width: calc(50vw * 0.1);
+  color: #fff;
+}
+
+section#personal-info > div > div > div > div > p {
+  margin: 0;
+  padding: 0;
+  color: var(--offwhite);
+  padding-top: 0.8rem;
+  margin-left: 0.5rem;
+  font-size: 0.8rem;
+}
+
+/* -- Section 2 -- */
+section#short-bio {
+   width: 100%;
+   height: 50vw; /* Calculating height by taking the width of one column (vw/2), since this section is only one row tall */
+   display: flex;
+   flex-direction: row;
+}
+
+/* Assigning correct colours for the diagonal gradients */
+.diagonal-bl-tr:nth-of-type(2) {
+  --color1: var(--red); 
+  --color2: var(--green); 
+}
+
+.diagonal-bl-tr:nth-of-type(2)::after {
+  background-color: var(--green);
+  width: 50vw;
+  padding-bottom: 2rem;
+}
+
+/* -- Section 3 -- */
+section#projects {
+   width: 100%;
+   height: calc(50vw * 2.5); /* Calculating height by taking the width of one column (vw/2), since this section is only one row tall */
+   display: grid;
+   grid-template-areas:
+      "a b" 
+      "c b" 
+      "d e"
+      "f e"
+      "g h";
+}
+
+/* Assigning correct grid areas for projects section */
+section#projects > div:nth-of-type(1) { grid-area: a; }
+section#projects > div:nth-of-type(2) { grid-area: b; }
+section#projects > div:nth-of-type(3) { grid-area: c; }
+section#projects > div:nth-of-type(4) { grid-area: d; }
+
+/* Overlapping circles */
+section#projects > div:nth-of-type(1) > div {
+  mix-blend-mode: difference;
+  margin-top: -25vw;
+}
+
+/* Projects label */
+section#projects > div:nth-of-type(3) { 
+  border-bottom-left-radius: 25vw;
+  /* WHY DOES THIS WORK? IDK. BUT ITS IMPORTANT!! */
+  margin-top: -27.5vw;
+}
+
+/* Green and black stripes in the right column */
+#stripes-1 {
+  --stripes-color-1: var(--lime);
+  --stripes-color-2: var(--offblack);
+  position: relative;
+}
+
+#stripes-2 {
+  --stripes-color-1: var(--lime);
+  --stripes-color-2: var(--offblack);
+}
+
+#stripes-1:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50vw;
+  height: 50vw;
+  display: inline-block;
+  background: linear-gradient(135deg, var(--red) 0%, var(--red) 50%, #00000000 50%, #00000000 100%);
+}
+
+
+
+/* ----- UTILITY CLASSES ----- */
+
+/* Aspect ratios */
+.aspect-1x1 { width: 50vw; height: 50vw; }
+
+.aspect-1x2 {
+   width: 50vw;
+   height: 100vw;
+   display: flex;
+   flex-direction: column;
+}
+
+.aspect-2x1 {
+   width: 100vw;
+   height: 50vw;
+   display: flex;
+   flex-direction: row;
+}
+
+.aspect-2x1-halved {
+   width: 50vw;
+   height: 25vw;
+}
+
+/* Colours */
+.red        { background-color: var(--red); }
+.orange     { background-color: var(--orange); }
+.yellow     { background-color: var(--yellow); }
+.green      { background-color: var(--green); }
+.blue       { background-color: var(--blue); }
+.darkblue   { background-color: var(--darkblue); }
+.salmon     { background-color: var(--salmon);}
+.offwhite   { background-color: var(--offwhite); }
+.offblack   { background-color: var(--offblack); }
+.purple     { background-color: var(--purple); }
+.pink       { background-color: var(--pink); }
+.gray       { background-color: var(--gray); }
+.orange     { background-color: var(--orange); }
+.lime       { background-color: var(--lime); } 
+
+.r-tl { /* Arch top left */
+   border-radius: 100% 0 0 0; }
+.r-tr { /* Arch top right */
+   border-radius: 0 100% 0 0; }
+.r-br { /* Arch bottom right */
+   border-radius: 0 0 100% 0; }
+.r-bl { /* Arch bottom left */
+   border-radius: 0 0 0 100%; }
+
+/* Simple circle shape */
+.circle { border-radius: 50%; }
+
+.diagonal-tl-br { /* Diagonal gradient top left to bottom right */
+   background: linear-gradient(45deg, var(--color1) 0%, var(--color1) 50%, var(--color2) 50%, var(--color2) 100%);
+}
+
+.diagonal-bl-tr { /* Diagonal gradient top left to bottom right */
+   background: linear-gradient(135deg, var(--color1) 0%, var(--color1) 50%, var(--color2) 50%, var(--color2) 100%);
+}
+
+.vertical { /* Diagonal gradient top left to bottom right */
+  background: linear-gradient(0deg, var(--color1) 0%, var(--color1) 50%, var(--color2) 50%, var(--color2) 100%);
+}
+
+.horizontal { /* Diagonal gradient top left to bottom right */
+  background: linear-gradient(45deg, var(--color1) 0%, var(--color1) 50%, var(--color2) 50%, var(--color2) 100%);
+}
+
+/* Stripes */
+.vertical-stripes {
+  background: repeating-linear-gradient(
+  90deg,
+  var(--stripes-color-1),
+  var(--stripes-color-1) var(--stripes-width),
+  var(--stripes-color-2) var(--stripes-width),
+  var(--stripes-color-2) calc(2 * var(--stripes-width))
+);}
+
+  /* MEDIA QUERIES */
