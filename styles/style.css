@@ -59,49 +59,88 @@ section#personal-info > div:nth-of-type(2) { grid-area: b; }
 section#personal-info > div:nth-of-type(3) { grid-area: c; }
 section#personal-info > div:nth-of-type(4) { grid-area: d; }
 
-/* Basic information text */
-section#personal-info > div > div > div > h3 {
-    margin: 0;
-    padding: 0;
-    color: var(--offwhite);
-    padding-top: 1rem;
-    margin-left: 1rem;
-    font-size: 1.3rem;
-}
-
+/* Self portrait */
 section#personal-info > div > div > img {
   margin: 0;
   padding: 0;
   color: var(--offwhite);
-  height: calc(50vw * 0.9);
-  width: calc(50vw * 0.9);
-  transform: translateY(calc(50vw * 0.1));
+  height: calc(50vw * 0.8);
+  width: calc(50vw * 0.8);
+  transform: translateY(calc(50vw * 0.18)) translateX(calc(50vw * 0.1));
 }
 
-section#personal-info > div:nth-of-type(3) > div {
-  overflow: hidden;
+/* Name */
+section#personal-info > div > div > div > h3 {
+    margin: 0;
+    padding: 0;
+    color: var(--offwhite);
+    font-family: 'joschmi', Times, serif;
+    transform: translateX(calc(50vw * 0.12)) translateY(calc(50vw * 0.05));
+    font-size: 8vw;
+    line-height: 1;
 }
 
+/* Location */
 #location-container {
-  display: flex;
-  flex-direction: row;
+  margin-top: calc(50vw * 0.1);
+  display: grid;
+  grid-template-areas: "a b"
+                       "c c";
 }
 
-#pin-svg {
-  margin-top: 0.8rem;
-  margin-left: 0.8rem;
-  height: calc(50vw * 0.1);
-  width: calc(50vw * 0.1);
-  color: #fff;
-}
-
+/* Umbrella styles for paragraphs in location area */
 section#personal-info > div > div > div > div > p {
   margin: 0;
   padding: 0;
   color: var(--offwhite);
   padding-top: 0.8rem;
   margin-left: 0.5rem;
-  font-size: 0.8rem;
+  font-size: 4vw;
+}
+
+section#personal-info > div > div > p {
+  margin-left: calc(50vw * 0.06);
+}
+
+span#creative-span{
+  font-size: 5vw;
+  letter-spacing: calc(50vw * -0.001);
+}
+
+span#designer-span{
+  font-size: 5vw;
+  letter-spacing: calc(50vw * 0.02);
+}
+
+span#developer-span{
+  font-size: 5vw;
+  letter-spacing: calc(50vw * 0.013);
+}
+
+/* Pin SVG */
+#location-container > img { 
+  grid-area: a;
+  width: calc(50vw * 0.08);
+  height: calc(50vw * 0.08);
+  margin-right: calc(50vw * -0.2);
+  margin-left: calc(50vw * 0.12);
+  margin-top: calc(50vw * 0.06);
+  color: #fff;
+}
+
+/* "Amsterdam" text */
+#location-container > p:nth-of-type(1) {
+  grid-area: b; 
+  margin-left: calc(50vw * -0.15);
+  margin-top: calc(50vw * -0.018);
+}
+
+/* "Netherlands" text */
+#location-container > p:nth-of-type(2) { 
+  grid-area: c; 
+  margin-left: calc(50vw * 0.12);
+  margin-top: calc(50vw * -0.07);
+  font-size: 3.4vw;
 }
 
 /* -- Section 2 -- */
@@ -138,22 +177,36 @@ section#projects {
 }
 
 /* Assigning correct grid areas for projects section */
-section#projects > div:nth-of-type(1) { grid-area: a; }
-section#projects > div:nth-of-type(2) { grid-area: b; }
-section#projects > div:nth-of-type(3) { grid-area: c; }
-section#projects > div:nth-of-type(4) { grid-area: d; }
+section#projects > div:nth-of-type(1) { grid-area: a;}
+section#projects > div:nth-of-type(2) { grid-area: b; z-index: 2;}
+section#projects > div:nth-of-type(3) { grid-area: c; z-index: 2;}
+section#projects > div:nth-of-type(4) { grid-area: d; z-index: 2;}
 
 /* Overlapping circles */
 section#projects > div:nth-of-type(1) > div {
   mix-blend-mode: difference;
   margin-top: -25vw;
+  z-index: 2;
 }
 
-/* Projects label */
+/* Projects label element */
 section#projects > div:nth-of-type(3) { 
   border-bottom-left-radius: 25vw;
   /* WHY DOES THIS WORK? IDK. BUT ITS IMPORTANT!! */
-  margin-top: -27.5vw;
+  margin-top: -10vw;
+  overflow: hidden;
+  z-index: 2;
+  box-shadow: 0 20px 30px 2px var(--offblack);
+}
+
+/* Projects label */
+section#projects > div:nth-of-type(3) > h2 { 
+  font-family:'joschmi', Times, serif;
+  color: var(--offblack);
+  text-align: right;
+  padding-right: calc(50vw * 0.02);
+  margin-top: calc(50vw * 0.05);
+  font-size: 14vw;
 }
 
 /* Green and black stripes in the right column */
@@ -179,7 +232,28 @@ section#projects > div:nth-of-type(3) {
   background: linear-gradient(135deg, var(--red) 0%, var(--red) 50%, #00000000 50%, #00000000 100%);
 }
 
+#projects > img:nth-of-type(1) {
+  border-bottom-left-radius: 50%;
+  transform: translateY(calc(50vw * -0.7));
+  box-shadow: 0 20px 30px 2px var(--offblack);
+  transition: transform 0.2s ease-in-out;
+  z-index: 1;
+}
 
+#projects > img:nth-of-type(1):hover {
+  transform: translateY(calc(50vw * -0.6));
+}
+
+#projects > img:nth-of-type(2) {
+  border-bottom-left-radius: 50%;
+  transform: translateY(calc(50vw * -0.2)) translateX(-50vw);
+  transition: transform 0.2s ease-in-out;
+  z-index: 0;
+}
+
+#projects > img:nth-of-type(2):hover {
+  transform: translateY(calc(50vw * -0.1)) translateX(-50vw);
+}
 
 /* ----- UTILITY CLASSES ----- */
 
